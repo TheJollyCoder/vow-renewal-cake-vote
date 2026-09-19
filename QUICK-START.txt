@@ -1,0 +1,18 @@
+FASTEST PATH
+============
+1. Upload this folder to a GitHub repo.
+2. Cloudflare -> Workers & Pages -> Create -> Pages -> Import repo.
+3. Build command: BLANK
+4. Output directory: public
+5. Deploy.
+6. Create a KV namespace.
+7. Pages project -> Settings -> Bindings -> Add KV:
+      Variable name: WEDDING_CONFIG
+8. Redeploy.
+9. Open https://YOUR-SITE.pages.dev/setup/
+10. First passcode: cake2026 (unless you set ADMIN_PASSWORD)
+11. Add both people's Venmo / Cash App / Zelle / Apple Cash info and save.
+12. Open https://YOUR-SITE.pages.dev/card/
+13. Print at ACTUAL SIZE / 100% on 4x5 cardstock.
+
+The printed QR points only to the permanent site URL, so you can change payment details later without reprinting it.
