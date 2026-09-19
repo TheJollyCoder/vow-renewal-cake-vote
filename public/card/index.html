@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex,nofollow" />
+  <title>Print 4x5 Cake Vote Card</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <main class="print-page">
+    <section class="print-card">
+      <img class="botanical top-left" src="/botanical.svg" alt="" />
+      <img class="botanical bottom-right" src="/botanical.svg" alt="" />
+      <div class="print-content">
+        <p class="print-script">Help Fund</p>
+        <p class="print-serif">Our Honeymoon</p>
+        <p class="print-copy">Who would you like to see get cake smashed in their face?</p>
+        <div id="card-qr"><img id="qr-image" alt="QR code to the cake vote website" /></div>
+        <p class="print-scan">Scan to choose</p>
+        <p class="print-copy">Whoever raises the most gets to smash cake in the other person's face.</p>
+        <p class="print-thanks">Thank you for celebrating with us!</p>
+      </div>
+    </section>
+    <div class="card-tools">
+      <p><strong>4 × 5 inch portrait card</strong></p>
+      <p class="small-note">After deployment, this automatically uses your site's public URL. If needed, paste a different permanent URL below.</p>
+      <input id="site-url" type="url" />
+      <div style="margin-top:10px; display:flex; gap:8px; justify-content:center; flex-wrap:wrap">
+        <button id="update-qr" class="secondary-btn" type="button">Update QR</button>
+        <button id="print-btn" class="primary-btn" type="button">Print 4×5 card</button>
+      </div>
+    </div>
+  </main>
+  <script src="/card/card.js" defer></script>
+</body>
+</html>
