@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex,nofollow" />
+  <title>Cake Vote Setup</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <main class="setup-shell">
+    <header class="setup-header">
+      <p class="eyebrow">Joe + Destini</p>
+      <h1>Cake Vote Setup</h1>
+      <p class="small-note">Add or change payment details from your phone. Guests never see this page unless you give them the URL.</p>
+    </header>
+
+    <div id="status"></div>
+
+    <section class="setup-card" id="login-card">
+      <h2>Unlock settings</h2>
+      <div class="form-grid one">
+        <div class="field">
+          <label for="admin-password">Admin passcode</label>
+          <input id="admin-password" type="password" autocomplete="current-password" placeholder="Enter passcode" />
+          <p class="form-help">First deploy default: <strong>cake2026</strong> unless you set ADMIN_PASSWORD in Cloudflare. Change it below after your first save.</p>
+        </div>
+      </div>
+      <div style="margin-top:12px"><button id="unlock-btn" class="primary-btn" type="button">Unlock</button></div>
+    </section>
+
+    <form id="settings-form" class="hidden">
+      <section class="setup-card">
+        <h2>Joe</h2>
+        <div id="joe-fields" class="form-grid"></div>
+      </section>
+
+      <section class="setup-card">
+        <h2>Destini</h2>
+        <div id="destini-fields" class="form-grid"></div>
+      </section>
+
+      <details class="setup-card advanced">
+        <summary>Text & appearance (optional)</summary>
+        <div class="form-grid" style="margin-top:14px">
+          <div class="field full"><label>Page title</label><input id="siteTitle" /></div>
+          <div class="field full"><label>Main question</label><textarea id="introText"></textarea></div>
+          <div class="field full"><label>Rules text</label><textarea id="rulesText"></textarea></div>
+          <div class="field full"><label>Thank-you text</label><input id="thankYouText" /></div>
+          <div class="field"><label>Background</label><input id="theme-background" type="color" /></div>
+          <div class="field"><label>Main text</label><input id="theme-ink" type="color" /></div>
+          <div class="field"><label>Accent</label><input id="theme-accent" type="color" /></div>
+          <div class="field"><label>Border</label><input id="theme-border" type="color" /></div>
+        </div>
+      </details>
+
+      <section class="setup-card">
+        <h2>Security</h2>
+        <div class="field">
+          <label for="new-password">New admin passcode (optional)</label>
+          <input id="new-password" type="password" autocomplete="new-password" placeholder="Leave blank to keep current passcode" />
+          <p class="form-help">Use at least 6 characters. Changing it takes effect immediately after save.</p>
+        </div>
+      </section>
+
+      <div class="setup-actions">
+        <a class="secondary-btn" href="/" target="_blank">Preview site</a>
+        <a class="secondary-btn" href="/card/" target="_blank">Print card</a>
+        <button class="primary-btn" type="submit">Save changes</button>
+      </div>
+    </form>
+  </main>
+  <script src="/setup/setup.js" defer></script>
+</body>
+</html>
