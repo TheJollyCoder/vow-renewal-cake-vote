@@ -18,8 +18,8 @@ There is **no vote tracking and no financial integration**. Joe and Destini comp
 6. Open the Pages project → **Settings → Bindings → Add → KV namespace**.
    - Variable name: `WEDDING_CONFIG`
    - Namespace: the one you just created
-7. Optional but recommended: add an environment variable/secret named `ADMIN_PASSWORD` with your preferred first passcode.
-8. **Redeploy** after adding the KV binding.
+7. **Required:** go to **Settings → Variables and Secrets → Add**, create `ADMIN_PASSWORD`, enter a private passcode, and choose **Encrypt**.
+8. **Redeploy** after adding the KV binding and secret.
 
 Cloudflare's Pages docs require a redeploy after adding a KV binding.
 
@@ -29,8 +29,8 @@ Open:
 
 `https://YOUR-SITE.pages.dev/setup/`
 
-- If you did not set `ADMIN_PASSWORD`, the first passcode is `cake2026`.
-- Change the passcode on your first save.
+- Unlock with the `ADMIN_PASSWORD` secret you created in Cloudflare.
+- You can change the passcode on your first save; after that, the new passcode is stored as a hash in KV.
 - Enter Joe and Destini's payment handles/details.
 - Add payment/deep links where available.
 - You can upload Venmo/Zelle/etc. QR screenshots directly in Setup.
@@ -76,5 +76,5 @@ Wrangler will serve the static site plus Pages Functions and a local KV binding.
 ## Security notes
 
 - `/setup/` is no-indexed but still public by URL; the passcode is the protection.
-- Change the default passcode immediately if you did not set `ADMIN_PASSWORD` before deployment.
+- `ADMIN_PASSWORD` is required for the first setup unlock. Keep it encrypted in Cloudflare and do not commit it to GitHub.
 - Do not enter passwords, account numbers, routing numbers, or banking credentials. Only enter public payment handles, phone/email identifiers used for payments, payment links, and QR images.
