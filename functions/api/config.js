@@ -59,14 +59,15 @@ async function loadRecord(env) {
 async function validPassword(record, env, password) {
   if (!password) return false;
   if (record?.adminHash) return (await sha256(password)) === record.adminHash;
-  const bootstrap = env.ADMIN_PASSWORD || 'cake2026';
-  return password === bootstrap;
+  if (!env.ADMIN_PASSWORD) return false;
+  return password === env.ADMIN_PASSWORD;
 }
 
 export async function onRequestGet({ request, env }) {
   const record = await loadRecord(env);
   const config = sanitizeConfig(record?.config || DEFAULT_CONFIG);
   const wantsAdmin = request.headers.has('X-Admin-Password');
+  if (wantsAdmin && !record?.adminHash && !env.ADMIN_PASSWORD) return json({error:'ADMIN_PASSWORD is not configured in Cloudflare yet.'}, 503);
   if (wantsAdmin && !(await validPassword(record, env, request.headers.get('X-Admin-Password')))) return json({error:'Wrong admin passcode.'}, 401);
   return json(config);
 }
@@ -76,9 +77,10 @@ export async function onRequestPost({ request, env }) {
   let body;
   try { body = await request.json(); } catch (_) { return json({error:'Invalid request.'},400); }
   const record = await loadRecord(env);
+  if (!record?.adminHash && !env.ADMIN_PASSWORD) return json({error:'ADMIN_PASSWORD is not configured in Cloudflare yet.'}, 503);
   if (!(await validPassword(record, env, cleanString(body.password, 300)))) return json({error:'Wrong admin passcode.'},401);
   const config = sanitizeConfig(body.config);
-  let adminHash = record?.adminHash || await sha256(env.ADMIN_PASSWORD || 'cake2026');
+  let adminHash = record?.adminHash || await sha256(env.ADMIN_PASSWORD);
   if (body.newPassword) {
     const next = cleanString(body.newPassword, 300);
     if (next.length < 6) return json({error:'New passcode must be at least 6 characters.'},400);
