@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#f7f0e6" />
+  <title>Help Fund Our Honeymoon</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <main class="page-shell">
+    <section class="wedding-card" aria-live="polite">
+      <img class="botanical top-left" src="/botanical.svg" alt="" />
+      <img class="botanical bottom-right" src="/botanical.svg" alt="" />
+      <div class="content">
+        <section id="choose-screen">
+          <p class="eyebrow">A little wedding-day mischief</p>
+          <h1 class="script-title">Help Fund</h1>
+          <div class="serif-title">Our Honeymoon</div>
+          <div class="ornament"><span class="heart">♥</span></div>
+          <p id="intro-text" class="question">Who would you like to see get cake smashed in their face?</p>
+          <div class="choice-grid">
+            <button class="choice-btn" data-target="joe" type="button">Joe</button>
+            <button class="choice-btn" data-target="destini" type="button">Destini</button>
+          </div>
+          <p id="rules-text" class="rule-text">At cake cutting, whoever raises the most gets to smash cake in the other person's face. Thank you for helping fund our honeymoon!</p>
+        </section>
+
+        <section id="pay-screen" class="hidden fade-in">
+          <p class="eyebrow">Your vote is in your donation</p>
+          <div class="selected-copy">
+            <h2 id="selection-title">You chose Joe.</h2>
+            <p id="selection-copy"></p>
+          </div>
+          <div class="provider-grid" id="provider-grid"></div>
+          <div id="payment-panel" class="payment-panel hidden"></div>
+          <div class="back-row"><button id="change-choice" class="text-button" type="button">← Change choice</button></div>
+        </section>
+      </div>
+    </section>
+  </main>
+  <script src="/app.js" defer></script>
+</body>
+</html>
